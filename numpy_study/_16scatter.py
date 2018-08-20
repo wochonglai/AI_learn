@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+'''
+散点图
+scatter(水平坐标,垂直坐标,s=大小,c=颜色,cmap=颜色映射,marker=点型,alpha=透明度,label=标签)
+'''
 import numpy as np
 import matplotlib.pyplot as mp
 

@@ -3,6 +3,7 @@ import datetime as dt
 import numpy as np
 
 
+# 将日期转换为距离时间起点的天数
 def dmy2days(dmy):
     dmy = str(dmy, encoding='utf-8')
     date = dt.datetime.strptime(dmy, '%d-%m-%Y').date()

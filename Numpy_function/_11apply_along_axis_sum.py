@@ -15,14 +15,19 @@ wdays, opening_prices, highest_prices, \
         usecols=(1, 3, 4, 5, 6), unpack=True,
         converters={1: dmy2wday})
 wdays = wdays[:16]
+print('wdays:',wdays)
 opening_prices = opening_prices[:16]
 highest_prices = highest_prices[:16]
 lowest_prices = lowest_prices[:16]
 closing_prices = closing_prices[:16]
 first_monday = np.where(wdays == 0)[0][0]
+print('f_m:',first_monday)
 last_friday = np.where(wdays == 4)[0][-1]
+print('l_f:',last_friday)
 indices = np.arange(first_monday, last_friday + 1)
+print('indices:',indices)
 indices = np.split(indices, 3)
+print('indices:',indices)
 
 
 def week_summary(indices):

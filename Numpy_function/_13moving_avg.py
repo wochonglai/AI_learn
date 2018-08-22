@@ -17,14 +17,22 @@ dates, closing_prices = np.loadtxt(
     dtype=np.dtype('M8[D], f8'),
     converters={1: dmy2ymd})
 ma51 = np.zeros(closing_prices.size - 4)
+# 五日平均价
 for i in range(ma51.size):
     ma51[i] = closing_prices[i:i + 5].mean()
+# np.ones(5) 产生五个1数组,做有效卷积
 ma52 = np.convolve(closing_prices,
                    np.ones(5) / 5, 'valid')
+# 取指数曲线的五个点
 weights = np.exp(np.linspace(-1, 0, 5))
+print('1:',weights)
 weights /= weights.sum()
+print('2:',weights)
+# 注意这儿的weights[::-1],使卷积计算时离的越近权重越大
 ma53 = np.convolve(closing_prices,
                    weights[::-1], 'valid')
+print('ma53',ma53)
+# 十日均线
 ma10 = np.convolve(closing_prices,
                    np.ones(10) / 10, 'valid')
 mp.figure('Moving Average', facecolor='lightgray')

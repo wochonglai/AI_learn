@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+import datetime as dt
+import numpy as np
 import matplotlib.pyplot as mp
 import matplotlib.dates as md
 
@@ -13,8 +16,16 @@ dates, closing_prices = np.loadtxt(
     usecols=(1, 6), unpack=True,
     dtype=np.dtype('M8[D], f8'),
     converters={1: dmy2ymd})
-mp.figure('Moving Average', facecolor='lightgray')
-mp.title('Moving Average', fontsize=20)
+N = 5
+medios = np.convolve(closing_prices,
+                     np.ones(N) / N, 'valid')
+stds = np.zeros(medios.size)
+for i in range(stds.size):
+    stds[i] = np.std(closing_prices[i:i + N])
+lowers = medios - 2 * stds
+uppers = medios + 2 * stds
+mp.figure('Bollinger Bands', facecolor='lightgray')
+mp.title('Bollinger Bands', fontsize=20)
 mp.xlabel('Date', fontsize=14)
 mp.ylabel('Price', fontsize=14)
 ax = mp.gca()
@@ -29,6 +40,12 @@ mp.grid(linestyle=':')
 dates = dates.astype(md.datetime.datetime)
 mp.plot(dates, closing_prices, c='lightgray',
         label='Closing Price')
+mp.plot(dates[N - 1:], medios, c='dodgerblue',
+        label='Medio')
+mp.plot(dates[N - 1:], lowers, c='limegreen',
+        label='Lower')
+mp.plot(dates[N - 1:], uppers, c='orangered',
+        label='Upper')
 mp.legend()
 mp.gcf().autofmt_xdate()
 mp.show()

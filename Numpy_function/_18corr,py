@@ -21,19 +21,20 @@ _, vale_closing_prices = np.loadtxt(
     usecols=(1, 6), unpack=True,
     dtype=np.dtype('M8[D], f8'),
     converters={1: dmy2ymd})
+# diff 数组前后两项差值形成新数组
 bhp_returns = np.diff(
     bhp_closing_prices) / bhp_closing_prices[:-1]
 vale_returns = np.diff(
     vale_closing_prices) / vale_closing_prices[:-1]
-ave_a = np.mean(bhp_returns)
-dev_a = bhp_returns - ave_a
-var_a = np.mean(dev_a * dev_a)
-std_a = np.sqrt(var_a)
+ave_a = np.mean(bhp_returns)  #平均值
+dev_a = bhp_returns - ave_a   #离差
+var_a = np.mean(dev_a * dev_a)  #方差
+std_a = np.sqrt(var_a)  #标准差
 ave_b = np.mean(vale_returns)
 dev_b = vale_returns - ave_b
 var_b = np.mean(dev_b * dev_b)
 std_b = np.sqrt(var_b)
-cov_ab = np.mean(dev_a * dev_b)
+cov_ab = np.mean(dev_a * dev_b) #协方差
 cov_ba = np.mean(dev_b * dev_a)
 covs = np.array([
     [var_a, cov_ab],

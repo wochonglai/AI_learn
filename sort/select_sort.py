@@ -10,9 +10,7 @@ def selectedSort(myList):
     for j in range(i + 1, length):
       # 如果找到比当前值小的index,则进行两值交换
       if myList[j] < myList[smallest]:
-        tmp = myList[j]
-        myList[j] = myList[smallest]
-        myList[smallest] = tmp
+        myList[j], myList[smallest] = myList[smallest], myList[j]
     # 打印每一轮比较好的列表
     print("Round ", i, ": ", myList)
 

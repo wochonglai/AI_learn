@@ -25,7 +25,7 @@ for i in range(pred_prices.size):
     for j in range(N):
         a[j, ] = closing_prices[i + j: i + j + N]
     b = closing_prices[i + N: i + N * 2]
-    x = np.linalg.lstsq(a, b)[0]
+    x = np.linalg.lstsq(a, b,,rcond=None)[0]
     pred_prices[i] = b.dot(x)
 print(pred_prices)
 mp.figure('Stock Price Prediction',

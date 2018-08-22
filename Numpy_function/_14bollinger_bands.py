@@ -13,3 +13,7 @@ dates, closing_prices = np.loadtxt(
     usecols=(1, 6), unpack=True,
     dtype=np.dtype('M8[D], f8'),
     converters={1: dmy2ymd})
+mp.figure('Moving Average', facecolor='lightgray')
+mp.title('Moving Average', fontsize=20)
+mp.xlabel('Date', fontsize=14)
+mp.ylabel('Price', fontsize=14)

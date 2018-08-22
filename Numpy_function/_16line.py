@@ -22,11 +22,12 @@ pred_prices = np.zeros(
     closing_prices.size - 2 * N + 1)
 for i in range(pred_prices.size):
     a = np.zeros((N, N))
+    # j a的行号
     for j in range(N):
         a[j, ] = closing_prices[i + j: i + j + N]
     b = closing_prices[i + N: i + N * 2]
-    x = np.linalg.lstsq(a, b,,rcond=None)[0]
-    pred_prices[i] = b.dot(x)
+    x = np.linalg.lstsq(a, b,rcond=None)[0]
+    pred_prices[i] = b.dot(x) # 点乘相加
 print(pred_prices)
 mp.figure('Stock Price Prediction',
           facecolor='lightgray')
@@ -45,8 +46,9 @@ mp.grid(linestyle=':')
 dates = dates.astype(md.datetime.datetime)
 mp.plot(dates, closing_prices, 'o-',
         c='lightgray', label='Closing Price')
+# 追加预测的交易日
 dates = np.append(
-    dates, dates[-1] + pd.tseries.offsets.BDay())
+    dates, dates[-1] + pd.tseries.offsets.BDay()) # pd.tseries 时间序列,BDay()时间偏移,缺省为1
 mp.plot(dates[N * 2:], pred_prices, 'o-',
         c='orangered', label='Predicted Price')
 mp.legend()

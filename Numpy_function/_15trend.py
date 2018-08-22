@@ -23,11 +23,11 @@ resistance_points = trend_points + spreads
 support_points = trend_points - spreads
 days = dates.astype(int)
 a = np.column_stack((days, np.ones_like(days)))
-x = np.linalg.lstsq(a, trend_points)[0]
+x = np.linalg.lstsq(a, trend_points,rcond=None)[0]
 trend_line = days * x[0] + x[1]
-x = np.linalg.lstsq(a, resistance_points)[0]
+x = np.linalg.lstsq(a, resistance_points,rcond=None)[0]
 resistance_line = days * x[0] + x[1]
-x = np.linalg.lstsq(a, support_points)[0]
+x = np.linalg.lstsq(a, support_points,rcond=None)[0]
 support_line = days * x[0] + x[1]
 mp.figure('Trend', facecolor='lightgray')
 mp.title('Trend', fontsize=20)

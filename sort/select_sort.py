@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+'''选择排序'''
 def selectedSort(myList):
   # 获取list的长度
   length = len(myList)

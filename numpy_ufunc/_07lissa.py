@@ -4,6 +4,7 @@ import matplotlib.pyplot as mp
 
 
 t = np.linspace(0, 2 * np.pi, 201)
+# a水平方向走的周期,b垂直方向走的周期
 A, a, B, b = 10, 9, 5, 8
 x = A * np.sin(a * t + np.pi / 2)
 y = B * np.sin(b * t)

@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+'''
+定积分
+'''
 import numpy as np
 import scipy.integrate as si
 import matplotlib.pyplot as mp

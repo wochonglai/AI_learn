@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 import numpy as np
+
+
 A = np.mat('3 -2; 1 0')
 eigvals, eigvecs = np.linalg.eig(A)
 print(eigvals)

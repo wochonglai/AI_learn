@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 import numpy as np
+
+
 a = np.array([0, 1, -2, 3, 4])
 b = np.array([-5, 6, 7, 8, -9])
 #c = a ^ b

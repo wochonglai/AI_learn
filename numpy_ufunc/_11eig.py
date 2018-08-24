@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+'''
+特征值与特征向量
+'''
 import numpy as np
 
 

@@ -12,8 +12,10 @@ def f(x):
     y = 2 * x ** 2 + 3 * x + 4
     return y
 a, b = -5, 5
+# scipy.integrate.quad()直接求定积分
 quad = si.quad(f, a, b)[0]
 print(quad)
+# 传统分割为梯形计算近似面积
 x1 = np.linspace(a, b, 1001)
 y1 = f(x1)
 n = 50

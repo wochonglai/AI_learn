@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+'''
+均值移除
+'''
 import numpy as np
 import sklearn.preprocessing as sp
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 '''
-批量梯度下降做线性拟合
+批量梯度下降
 '''
 import numpy as np
 import matplotlib.pyplot as mp

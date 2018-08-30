@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+'''事件预测'''
 import numpy as np
 import sklearn.preprocessing as sp
 import sklearn.model_selection as ms

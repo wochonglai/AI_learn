@@ -18,16 +18,20 @@ x = np.array(x)
 epsilons, scores, models = np.linspace(0.3,1.2,10),[],[]
 # 模型最优化选择
 for epsilon in epsilons:
-  model = sc.DBSCAN(eps=0.8, min_samples=5)
+  model = sc.DBSCAN(eps=epsilon, min_samples=5)
   model.fit(x)
   score = sm.silhouette_score(x, model.labels_, sample_size=len(x), metric='euclidean')
   scores.append(score)
   models.append(model)
+scores = np.array(scores)
+best_index = scores.argmax()
+best_score = scores[best_index]
+best_model = models[best_index]
 
-pred_y = model.fit_predict(x)
+pred_y = best_model.fit_predict(x)
 core_mask = np.zeros(len(x), dtype=bool)
-core_mask[model.core_sample_indices_] = True
-offset_mask = model.labels_ == -1
+core_mask[best_model.core_sample_indices_] = True
+offset_mask = best_model.labels_ == -1
 periphery_mask = ~(core_mask | offset_mask)
 mp.figure('DBSCAN Cluster', facecolor='lightgray')
 mp.title('DBSCAN Cluster', fontsize=20)
@@ -47,3 +51,4 @@ mp.scatter(x[offset_mask][:, 0], x[offset_mask][:, 1],
            marker='x', c=cs[pred_y[offset_mask]], s=60,
            label='Offset')
 mp.show()
+

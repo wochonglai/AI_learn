@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+'''
+map函数的使用
+'''
 def f1(x):
     return x + 3
 

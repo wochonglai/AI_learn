@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 '''
-利用兰氏距离做用户喜好推荐
+皮氏距离推荐列表,综合考虑用户相似度与分值,再给出推荐列表
 '''
 import json
 import numpy as np

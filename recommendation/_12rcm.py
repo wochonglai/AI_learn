@@ -59,8 +59,7 @@ for i, user in enumerate(users):
     for movie, score_sum in score_sums.items():
         movie_ranks[movie] = \
             score_sum / weight_sums[movie]
-    sorted_indices = np.array(list(
-        movie_ranks.values())).argsort()[::-1]
+    sorted_indices = np.array(list(movie_ranks.values())).argsort()[::-1]  # 降序排列下标
     recomms = np.array(list(
         movie_ranks.keys()))[sorted_indices]
     print(user, '->', recomms)

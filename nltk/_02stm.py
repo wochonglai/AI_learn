@@ -16,3 +16,9 @@ words = ['table', 'probably', 'wolves', 'playing', 'is',
 porter = pt.PorterStemmer()
 lancaster = lc.LancasterStemmer()
 snowball = sb.SnowballStemmer('english')
+for word in words:
+    pstem = porter.stem(word)
+    lstem = lancaster.stem(word)
+    sstem = snowball.stem(word)
+    print('{:10} {:10} {:10} {:10}'.format(
+        word, pstem, lstem, sstem))

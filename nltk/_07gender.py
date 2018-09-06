@@ -20,3 +20,25 @@ for n_letters in range(1, 6):
             'feature': female_name[-n_letters:].lower()}
         data.append((feature, 'female'))
     random.seed(7)
+    random.shuffle(data)
+    train_data = data[:int(len(data) / 2)]
+    test_data = data[int(len(data) / 2):]
+    model = cf.NaiveBayesClassifier.train(train_data)   # 直接创建加训练返回模型
+    ac = cf.accuracy(model, test_data)  #得分
+    models.append(model)
+    acs.append(ac)
+# 找出模型得分最高的下标
+best_index = np.array(acs).argmax()
+best_letters = best_index + 1
+best_model = models[best_index]
+best_ac = acs[best_index]   # 最好的模型精度
+print(best_letters, best_ac)
+names = ['Leonardo', 'Amy', 'Sam', 'Tom',
+         'Katherine', 'Taylor', 'Susanne']
+genders = []
+for name in names:
+    feature = {'feature': name[-best_letters:].lower()}
+    gender = best_model.classify(feature)
+    genders.append(gender)
+for name, gender in zip(names, genders):
+    print(name, '->', gender)

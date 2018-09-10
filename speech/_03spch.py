@@ -12,3 +12,13 @@ import hmmlearn.hmm as hl   # 隐马尔科夫模型
 warnings.filterwarnings('ignore',
                         category=DeprecationWarning)
 np.seterr(all='ignore')
+
+
+# 该方法查找目录下所有.wav文件,返回对应路径/文件名
+def search_speeches(directory, speeches):
+    directory = os.path.normpath(directory)
+    # 判断目录是否存在
+    if not os.path.isdir(directory):
+        raise(IOError("The directory '" + directory +
+                      "' doesn't exist!"))
+    for entry in os.listdir(directory):

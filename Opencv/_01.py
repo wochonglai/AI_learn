@@ -9,15 +9,3 @@ print(original.shape)
 cv.imshow('Original', original)
 # 创建与original维度一样的o矩阵
 blue = np.zeros_like(original)
-blue[..., 0] = original[..., 0]  # 0 - 蓝色通道
-cv.imshow('Blue', blue)
-green = np.zeros_like(original)
-green[..., 1] = original[..., 1]  # 1 - 绿色通道
-cv.imshow('Green', green)
-red = np.zeros_like(original)
-red[..., 2] = original[..., 2]  # 2 - 红色通道
-cv.imshow('Red', red)
-# 灰度转换
-gray = cv.cvtColor(original,cv.COLOR_BAYER_BG2GRAY)
-print(gray.shape)
-cv.imshow('Gray', gray)

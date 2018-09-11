@@ -18,3 +18,6 @@ red = np.zeros_like(original)
 red[..., 2] = original[..., 2]  # 2 - 红色通道
 cv.imshow('Red', red)
 # 灰度转换
+gray = cv.cvtColor(original,cv.COLOR_BAYER_BG2GRAY)
+print(gray.shape)
+cv.imshow('Gray', gray)

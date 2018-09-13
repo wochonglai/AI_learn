@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 '''
-词频
+词频统计
 '''
 import nltk.tokenize as tk
 import sklearn.feature_extraction.text as ft

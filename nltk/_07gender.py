@@ -27,6 +27,8 @@ for n_letters in range(1, 6):
     ac = cf.accuracy(model, test_data)  #得分
     models.append(model)
     acs.append(ac)
+
+    
 # 找出模型得分最高的下标
 best_index = np.array(acs).argmax()
 best_letters = best_index + 1

@@ -4,6 +4,6 @@
 '''
 import os
 import warnings
-import numpy as np
-import cv2 as cv
-import hmmlearn.hmm as hl
+warnings.filterwarnings('ignore',
+                        category=DeprecationWarning)
+np.seterr(all='ignore')

@@ -16,3 +16,10 @@ mixture = original.copy()
 cv.drawKeypoints(original, keypoints, mixture,
                  flags=cv.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
 cv.imshow('Mixture', mixture)
+mp.matshow(desc, cmap='jet', fignum='Description')
+mp.title('Description', fontsize=20)
+mp.xlabel('Feature', fontsize=14)
+mp.ylabel('Sample', fontsize=14)
+mp.tick_params(which='both', top=False, labeltop=False,
+               labelbottom=True, labelsize=10)
+mp.show()

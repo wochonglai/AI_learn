@@ -45,3 +45,24 @@ for descs, label in zip(train_x, train_y):
 test_objects = search_objects(
     '../data2/objects/testing')
 test_x, test_y, test_z = [], [], []
+for label, filenames in test_objects.items():
+    test_z.append([])
+    descs = np.array([])
+    for filename in filenames:
+        image = cv.imread(filename)
+        test_z[-1].append(image)
+        gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+        h, w = gray.shape[:2]
+        f = 200 / min(h, w)
+        gray = cv.resize(gray, None, fx=f, fy=f)
+        star = cv.xfeatures2d.StarDetector_create()
+        keypoints = star.detect(gray)
+        sift = cv.xfeatures2d.SIFT_create()
+        _, desc = sift.compute(gray, keypoints)
+        if len(descs) == 0:
+            descs = desc
+        else:
+            descs = np.append(descs, desc, axis=0)
+    test_x.append(descs)
+    test_y.append(label)
+pred_test_y = []

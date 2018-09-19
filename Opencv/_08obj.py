@@ -37,3 +37,11 @@ for label, filenames in train_objects.items():
     train_x.append(descs)
     train_y.append(label)
 models = {}
+for descs, label in zip(train_x, train_y):
+    model = hl.GaussianHMM(
+        n_components=4, covariance_type='diag',
+        n_iter=1000)    #covariance_type='diag'协方差,对角线,n_iter最大迭代次数
+    models[label] = model.fit(descs)
+test_objects = search_objects(
+    '../data2/objects/testing')
+test_x, test_y, test_z = [], [], []

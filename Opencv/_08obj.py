@@ -65,4 +65,20 @@ for label, filenames in test_objects.items():
             descs = np.append(descs, desc, axis=0)
     test_x.append(descs)
     test_y.append(label)
-pred_test_y = []
+for descs in test_x:
+    best_score, best_label = None, None
+    for label, model in models.items():
+        score = model.score(descs)
+        if (best_score is None) or (best_score < score):
+            best_score, best_label = score, label
+    pred_test_y.append(best_label)
+i = 0
+for label, pred_label, images in zip(
+        test_y, pred_test_y, test_z):
+    for image in images:
+        i += 1
+        cv.imshow('{} - {} {} {}'.format(
+            i, label,
+            '==' if label == pred_label else '!=',
+            pred_label), image)
+cv.waitKey()

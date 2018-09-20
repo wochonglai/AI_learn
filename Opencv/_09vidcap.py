@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 '''
-.视频捕捉
+视频捕捉
 '''
 import numpy as np
 import cv2 as cv

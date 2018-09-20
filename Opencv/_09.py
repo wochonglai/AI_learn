@@ -5,7 +5,6 @@
 import numpy as np
 import cv2 as cv
 vc = cv.VideoCapture(0)  # 0 - 视频捕捉设备编号
-vc = cv.VideoCapture(1)  # 1 - 视频捕捉设备编号
 while True:
     frame = vc.read()[1]
     cv.imshow('VideoCapture', frame)

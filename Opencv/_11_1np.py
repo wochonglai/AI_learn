@@ -18,3 +18,13 @@ U, S, V = np.linalg.svd(SIGMA)
 print('U =', U, sep='\n')
 # 主成分特征矩阵
 U_reduce = U[:, 0]
+print('U_reduce =', U_reduce, sep='\n')
+# 降维样本
+Z = X * U_reduce
+print('Z =', Z, sep='\n')
+# 恢复到均值极差转换之前
+X_approx = Z * U_reduce.T
+print('X_approx =', X_approx, sep='\n')
+# 恢复到原始样本
+A_approx = np.multiply(X_approx, s) + mu
+print('A_approx =', A_approx, sep='\n')

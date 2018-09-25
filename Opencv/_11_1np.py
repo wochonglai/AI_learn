@@ -8,3 +8,13 @@ print('A =', A, sep='\n')
 # 均值为0，极差为1
 mu = A.mean(axis=0)
 s = A.max(axis=0) - A.min(axis=0)
+X = (A - mu) / s
+print('X =', X, sep='\n')
+# 协方差矩阵
+SIGMA = X.T * X
+print('SIGMA =', SIGMA, sep='\n')
+# 奇异值分解
+U, S, V = np.linalg.svd(SIGMA)
+print('U =', U, sep='\n')
+# 主成分特征矩阵
+U_reduce = U[:, 0]

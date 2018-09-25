@@ -7,3 +7,7 @@ import sklearn.decomposition as dc
 A = np.mat('3 2000; 2 3000; 4 5000; 5 8000; 1 2000',
            dtype=float)
 print('A =', A, sep='\n')
+# PCA模型
+model = pl.Pipeline([
+    ('MinMaxScaler', sp.MinMaxScaler()),
+    ('PCA', dc.PCA(n_components=1))])

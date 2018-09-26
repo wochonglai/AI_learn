@@ -63,3 +63,8 @@ for label, filenames in test_faces.items():
                        0, 360, (255, 0, 255), 2)
             test_z.append(image)
 test_y = np.array(test_y)
+pred_test_y = []
+for face in test_x:
+    pred_code = model.predict(face)[0]
+    pred_test_y.append(pred_code)
+escape = False

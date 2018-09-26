@@ -13,3 +13,11 @@ for row in range(rows):
 		if row == 0:
 			mp.title(str(col), fontsize=8,
 				color='limegreen')
+		if col == 0:
+			mp.ylabel(str(row), fontsize=8,
+				color='limegreen')
+		mp.xticks(())
+		mp.yticks(())
+		image = x[y == col][row].reshape(64, 64)
+		mp.imshow(image, cmap='gray')
+mp.show()

@@ -42,3 +42,24 @@ for label, filenames in train_faces.items():
                 codec.transform([label])[0]))
 train_y = np.array(train_y)
 
+# 局部二值模式直方图人脸识别器
+model = cv.face.LBPHFaceRecognizer_create()
+model.train(train_x, train_y)   # 训练模型
+
+test_faces = search_faces('../data2/faces/testing')
+test_x, test_y, test_z = [], [], []
+for label, filenames in test_faces.items():
+    for filename in filenames:
+        image = cv.imread(filename)
+        gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+        faces = fd.detectMultiScale(
+            gray, 1.1, 2, minSize=(100, 200))
+        for l, t, w, h in faces:
+            test_x.append(gray[t:t + h, l:l + w])
+            test_y.append(int(
+                codec.transform([label])[0]))
+            a, b = int(w / 2), int(h / 2)
+            cv.ellipse(image, (l + a, t + b), (a, b), 0,
+                       0, 360, (255, 0, 255), 2)
+            test_z.append(image)
+test_y = np.array(test_y)

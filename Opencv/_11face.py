@@ -68,3 +68,8 @@ for face in test_x:
     pred_code = model.predict(face)[0]
     pred_test_y.append(pred_code)
 escape = False
+while not escape:
+    for code, pred_code, image in zip(
+            test_y, pred_test_y, test_z):
+        label = codec.inverse_transform([code])[0]
+        pred_label = codec.inverse_transform([pred_code])[0]

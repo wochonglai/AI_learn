@@ -24,3 +24,21 @@ def search_faces(directory):
                 faces[label] = []
             faces[label].append(path)
     return faces
+
+ 
+train_faces = search_faces('../data2/faces/training')
+codec = sp.LabelEncoder()
+codec.fit(list(train_faces.keys()))
+train_x, train_y = [], []
+for label, filenames in train_faces.items():
+    for filename in filenames:
+        image = cv.imread(filename)
+        gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
+        faces = fd.detectMultiScale(
+            gray, 1.1, 2, minSize=(100, 200))
+        for l, t, w, h in faces:
+            train_x.append(gray[t:t + h, l:l + w])
+            train_y.append(int(
+                codec.transform([label])[0]))
+train_y = np.array(train_y)
+

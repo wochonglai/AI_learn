@@ -25,7 +25,7 @@ def search_faces(directory):
             faces[label].append(path)
     return faces
 
- 
+
 train_faces = search_faces('../data2/faces/training')
 codec = sp.LabelEncoder()
 codec.fit(list(train_faces.keys()))
@@ -68,11 +68,6 @@ for face in test_x:
     pred_code = model.predict(face)[0]
     pred_test_y.append(pred_code)
 escape = False
-while not escape:
-    for code, pred_code, image in zip(
-            test_y, pred_test_y, test_z):
-        label = codec.inverse_transform([code])[0]
-        pred_label = codec.inverse_transform([pred_code])[0]
 while not escape:
     for code, pred_code, image in zip(
             test_y, pred_test_y, test_z):

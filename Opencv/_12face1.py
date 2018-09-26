@@ -7,3 +7,9 @@ mp.figure('Olivetti Faces', facecolor='black')
 mp.subplots_adjust(left=0.04, bottom=0.04,
 	right=0.96, top=0.96, wspace=0, hspace=0)
 rows, cols = 10, 40
+for row in range(rows):
+	for col in range(cols):
+		mp.subplot(rows, cols, row * cols + col + 1)
+		if row == 0:
+			mp.title(str(col), fontsize=8,
+				color='limegreen')

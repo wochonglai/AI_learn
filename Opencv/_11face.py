@@ -73,3 +73,19 @@ while not escape:
             test_y, pred_test_y, test_z):
         label = codec.inverse_transform([code])[0]
         pred_label = codec.inverse_transform([pred_code])[0]
+while not escape:
+    for code, pred_code, image in zip(
+            test_y, pred_test_y, test_z):
+        label = codec.inverse_transform([code])[0]
+        pred_label = codec.inverse_transform([pred_code])[0]
+        text = '{} {} {}'.format(
+            label,
+            '==' if label == pred_label else '!=',
+            pred_label)
+        cv.putText(image, text, (10, 60),
+                   cv.FONT_HERSHEY_SIMPLEX, 2,
+                   (255, 255, 255), 6)
+        cv.imshow('Recognizing...', image)
+        if cv.waitKey(1000) == 27:
+            escape = True
+            break

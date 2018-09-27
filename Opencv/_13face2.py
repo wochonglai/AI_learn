@@ -18,3 +18,7 @@ pred_test_y = model.predict(test_x)
 cm = sm.confusion_matrix(test_y, pred_test_y)
 cr = sm.classification_report(
 	test_y, pred_test_y)
+print(cr)
+mp.figure('Confusion Matrix',
+	facecolor='lightgray')
+mp.title('Confusion Matrix', fontsize=20)

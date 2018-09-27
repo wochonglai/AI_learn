@@ -15,3 +15,6 @@ train_x, test_x, train_y, test_y = \
 model = svm.SVC(class_weight='balanced')
 model.fit(train_x, train_y)
 pred_test_y = model.predict(test_x)
+cm = sm.confusion_matrix(test_y, pred_test_y)
+cr = sm.classification_report(
+	test_y, pred_test_y)

@@ -22,3 +22,6 @@ print(cr)
 mp.figure('Confusion Matrix',
 	facecolor='lightgray')
 mp.title('Confusion Matrix', fontsize=20)
+mp.xlabel('Predicted Class', fontsize=14)
+mp.ylabel('True Class', fontsize=14)
+mp.tick_params(labelsize=10)

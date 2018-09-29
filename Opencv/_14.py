@@ -23,3 +23,6 @@ print('U_reduce =', U_reduce, sep='\n')
 # 降维样本
 Z = X * U_reduce
 print('Z =', Z, sep='\n')
+# 恢复到归一化缩放后的样本
+X_approx = Z * U_reduce.T
+print('X_approx =', X_approx, sep='\n')

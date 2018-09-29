@@ -18,3 +18,8 @@ U, S, V = np.linalg.svd(SIGMA)
 print('U =', U, sep='\n')
 # 主成分特征矩阵
 U_reduce = U[:, 0]
+U_reduce = U[:, 0]
+print('U_reduce =', U_reduce, sep='\n')
+# 降维样本
+Z = X * U_reduce
+print('Z =', Z, sep='\n')

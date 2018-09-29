@@ -11,3 +11,6 @@ print('A =', A, sep='\n')
 model = pl.Pipeline([
 	('MinMaxScaler', sp.MinMaxScaler()),
 	('PCA', dc.PCA(n_components=1))])
+# 降维样本
+Z = model.fit_transform(A)
+print('Z =', Z, sep='\n')

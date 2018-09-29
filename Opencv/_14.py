@@ -7,3 +7,6 @@ print('A =', A, sep='\n')
 # 归一化缩放：均值为0，极差为1
 mu = A.mean(axis=0)
 s = A.max(axis=0) - A.min(axis=0)
+X = (A - mu) / s
+print('X =', X, sep='\n')
+# 协方差矩阵

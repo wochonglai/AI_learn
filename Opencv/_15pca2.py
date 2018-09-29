@@ -14,3 +14,6 @@ model = pl.Pipeline([
 # 降维样本
 Z = model.fit_transform(A)
 print('Z =', Z, sep='\n')
+# 恢复到原始样本
+A_approx = model.inverse_transform(Z)
+print('A_approx =', A_approx, sep='\n')

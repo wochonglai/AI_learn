@@ -26,3 +26,6 @@ print('Z =', Z, sep='\n')
 # 恢复到归一化缩放后的样本
 X_approx = Z * U_reduce.T
 print('X_approx =', X_approx, sep='\n')
+# 恢复到原始样本
+A_approx = np.multiply(X_approx, s) + mu
+print('A_approx =', A_approx, sep='\n')

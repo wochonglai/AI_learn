@@ -11,3 +11,7 @@ for ncp in ncps:
 	model.fit_transform(x)
 	evr = model.explained_variance_ratio_.sum()
 	evrs.append(evr)
+mp.figure('Explained Variance Ratio',
+	facecolor='lightgray')
+mp.title('Explained Variance Ratio', fontsize=20)
+mp.xlabel('n_components', fontsize=14)

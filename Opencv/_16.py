@@ -15,3 +15,11 @@ mp.figure('Explained Variance Ratio',
 	facecolor='lightgray')
 mp.title('Explained Variance Ratio', fontsize=20)
 mp.xlabel('n_components', fontsize=14)
+mp.ylabel('Explained Variance Ratio',
+	fontsize=14)
+mp.tick_params(labelsize=10)
+mp.grid(linestyle=':')
+mp.plot(ncps, evrs, c='dodgerblue',
+	label='Explained Variance Ratio')
+mp.legend()
+mp.show()

@@ -12,3 +12,8 @@ x = faces.data
 y = faces.target
 model = dc.PCA(n_components=140)
 pca_x = model.fit_transform(x)
+train_x, test_x, train_y, test_y = ms.train_test_split(
+    pca_x, y, test_size=0.2, random_state=7)
+model = svm.SVC(class_weight='balanced')
+model.fit(train_x, train_y)
+pred_test_y = model.predict(test_x)

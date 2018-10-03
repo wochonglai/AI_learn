@@ -21,3 +21,8 @@ mp.figure('KPCA', facecolor='lightgray')
 mp.title('KPCA', fontsize=20)
 mp.xlabel('x', fontsize=14)
 mp.ylabel('y', fontsize=14)
+mp.tick_params(labelsize=10)
+mp.grid(linestyle=':')
+mp.scatter(kpca_x[:, 0], kpca_x[:, 1], s=60, c=y,
+           cmap='brg', alpha=0.5)
+mp.show()

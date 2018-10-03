@@ -11,3 +11,5 @@ model = dc.KernelPCA(kernel='rbf',
 kpca_x = model.fit_transform(x)
 mp.figure('Original', facecolor='lightgray')
 mp.title('Original', fontsize=20)
+mp.xlabel('x', fontsize=14)
+mp.ylabel('y', fontsize=14)

@@ -9,3 +9,5 @@ model = dc.KernelPCA(kernel='rbf',
                      fit_inverse_transform=True,
                      gamma=10)
 kpca_x = model.fit_transform(x)
+mp.figure('Original', facecolor='lightgray')
+mp.title('Original', fontsize=20)
